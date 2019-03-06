@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Ubah Detail Berat Badan</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+	<nav th:replace="fragments/fragment :: navbar-home"></nav>
+		<div class="container">
+			<div class="row">
+				<h2>Form Berat Badan</h2>
+			</div>
+			<form th:action="@{'/berat/update/' + ${id}}" th:object="${berat}" method="POST">
+				<input type="hidden" name="id" th:value="${berat.id}">
+				<p>
+				<div class="row">
+					<div class="col-lg-4">Tanggal</div>
+					<div class="col-lg-4">
+						<input type="date" name="tanggal" th:value="${berat.tanggal}">
+					</div>
+				</div>
+				<p>
+				<div class="row">
+					<div class="col-lg-4">Max</div>
+					<div class="col-lg-4">
+						<input type="number" name="max" th:value="${berat.max}">
+					</div>
+				</div>
+				<p>
+				<div class="row">
+					<div class="col-lg-4">Min</div>
+					<div class="col-lg-4">
+						<input type="number" name="min" th:value="${berat.min}">
+					</div>
+				</div>
+				<p>
+				<button class ="btn btn-primary" onclick="myFunction()" type="submit">Simpan</button>
+			</form>
+		</div>
+	</body>
+	<script>
+		function myFunction() {
+		    alert("Detail berat badan telah diubah");
+		}
+		</script>
+</html>

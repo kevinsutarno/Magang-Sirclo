@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Home Page</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	<body>
+		<nav th:replace="fragments/fragment :: navbar-home"></nav>
+		
+		<div class="container">
+			<div class="row">
+				<h3>Detail Berat Badan</h3>
+			</div>
+			<p>
+			<div class="row">
+				<div class="col-lg-4">Tanggal</div>
+				<h4 th:text="${berat.tanggal}"></h4>
+			</div>
+			<p>
+			<div class="row">
+				<div class="col-lg-4">Max</div>
+				<h4 th:text="${berat.max}"></h4>
+			</div>
+			<p>
+			<div class="row">
+				<div class="col-lg-4">Min</div>
+				<h4 th:text="${berat.min}"></h4>
+			</div>
+			<p>
+			<div class="row">
+				<div class="col-lg-4">Perbedaan</div>
+				<h4 th:text="${berat.min}"></h4>
+			</div>
+			<p>
+			<a th:href="@{'/'}" class="btn btn-primary">Home</a>
+			<a th:href="@{'/berat/update/' + ${berat.id}}" class="btn btn-primary">Update</a>
+		</div>
+	</body>
+</html>

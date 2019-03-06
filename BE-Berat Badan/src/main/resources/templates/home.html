@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	
+	<head>
+		<title>Home Page</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+		<script type="text/javascript" charset="utf8" src="	https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css" />
+	<body>
+	<nav th:replace="fragments/fragment :: navbar-home"></nav>
+	
+	<div class="container">
+		<table id="mytable">
+		    <col width="140">
+		    <col width="140">
+		    <col width="140">
+		    <col width="140">
+		    <thead>
+		        <tr>
+		            <th>Tanggal</th>
+		            <th>MAX</th>
+		            <th>MIN</th>
+		            <th>Perbedaan</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr th:each="berat : *{listBerat}" >
+		            <td>
+		            	<a th:href="@{'/berat/' + ${berat.id}}" th:text="${berat.tanggal}"></a>
+		            </td>
+		            <td th:text="${berat.max}"></td>
+		            <td th:text="${berat.min}"></td>
+		            <td>
+			            <div th:with="result=${berat.max - berat.min}">
+						  <span th:text="${result}"></span>
+						</div>
+					</td>
+		            <td th:with="result=${berat.max - berat.min}"></td>
+		        </tr>
+		        <tr>
+		        	<td>Rata-Rata</td>
+		        	<td th:text="${rataMax}"></td>
+		        	<td th:text="${rataMin}"></td>
+		        	<td th:text="${rataPerbedaan}"></td>
+		        </tr>
+		    </tbody>
+		</table>
+	</div>
+	</body>
+	<script type="text/javascript">
+		$(document).ready( function () {
+		    $('#mytable').DataTable();
+		} );
+	</script>
+</html>
+		
